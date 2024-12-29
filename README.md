@@ -7,7 +7,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 ```bash
 npm install
 # or
-yarn
+yarn install
 # or
 pnpm install
 # or
