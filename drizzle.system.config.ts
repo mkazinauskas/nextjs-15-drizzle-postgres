@@ -6,7 +6,7 @@ config({ path: ['.env.local', '.env'] })
 
 export default defineConfig({
     schema: [
-        './src/server/db/app-schema.ts',
+        './src/server/db/system-schema.ts',
     ],
     out: './migrations/system',
     migrations: {
