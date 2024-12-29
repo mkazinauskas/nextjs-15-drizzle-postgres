@@ -12,9 +12,9 @@ services:
       POSTGRES_PASSWORD: dbuserpass
     healthcheck :
       test: [ "CMD", "pg_isready", "-q", "-d", "db", "-U", "dbuser" ]
-      interval : 5s
-      timeout : 5s
-      retries : 5
+      interval : 1s
+      timeout : 3s
+      retries : 20
     networks:
       - my-app-network
   dbmigration:
@@ -34,6 +34,10 @@ services:
       db:
         condition: service_healthy
     image: adminer:standalone
+    environment:
+      - ADMINER_DESIGN=nette
+      - ADMINER_PLUGINS=tables-filter tinymce    
+      - ADMINER_DEFAULT_SERVER=db
     restart: always
     ports:
       - 9081:8080
