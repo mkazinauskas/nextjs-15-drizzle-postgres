@@ -14,25 +14,13 @@ pnpm install
 bun install
 ```
 
-2. Create a `.env` file in the root directory and add the following:
+1. Create a `.env` file in the root directory and add the following:
 
 ```bash
 DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres
 ```
 
-3. Run migration scripts
-
-```bash
-npm run db:migrate
-# or
-yarn db:migrate
-# or
-pnpm db:migrate
-# or
-bun db:migrate
-```
-
-4. Start the development server
+1. Start the development server. Docker compose will automatically start the database and migration scripts.
 
 ```bash
 docker-compose up -d && npm run dev
