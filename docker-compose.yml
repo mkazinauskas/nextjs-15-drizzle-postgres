@@ -5,23 +5,41 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./.docker/db:/data/postgres
+      - .docker/db:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: db
       POSTGRES_USER: dbuser
       POSTGRES_PASSWORD: dbuserpass
+    healthcheck :
+      test: [ "CMD", "pg_isready", "-q", "-d", "db", "-U", "dbuser" ]
+      interval : 5s
+      timeout : 5s
+      retries : 5
+    networks:
+      - my-app-network
+  dbmigration:
+    depends_on:
+      db:
+        condition: service_healthy
+    build:
+      context: .
+      dockerfile: Dockerfile-migration
+    restart: no
+    environment:
+      DATABASE_URL: postgres://dbuser:dbuserpass@db:5432/db
     networks:
       - my-app-network
   adminer:
-    depends_on: 
-      - db
+    depends_on:
+      db:
+        condition: service_healthy
     image: adminer:standalone
     restart: always
     ports:
       - 9081:8080
     networks:
       - my-app-network
-      
+
 networks:
   my-app-network:
     driver: bridge

@@ -6,8 +6,8 @@ export default async function UsersTableComponent() {
 
     if (users.length === 0) {
         return (
-            <div className="flex flex-col items-center justify-center gap-4 text-center">
-                <h1 className="text-4xl font-bold">No users yet</h1>
+            <div className="flex flex-col items-center justify-center gap-4 text-center mx-auto">
+                <h2 className="text-2xl font-bold">No users yet</h2>
                 <p className="text-center">
                     Create a new user by clicking the button below
                 </p>
