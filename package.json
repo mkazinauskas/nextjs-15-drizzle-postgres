@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "db:generate": "dotenv -- drizzle-kit generate --config=drizzle.system.config.ts && drizzle-kit generate --config=drizzle.app.config.ts",
-    "db:migrate": "dotenv -- drizzle-kit migrate --config=drizzle.system.config.ts && drizzle-kit migrate --config=drizzle.app.config.ts",
-    "db:studio": "dotenv drizzle-kit studio"
+    "db:migrate": "dotenv -- drizzle-kit migrate --config=drizzle.system.config.ts && drizzle-kit migrate --config=drizzle.app.config.ts"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
